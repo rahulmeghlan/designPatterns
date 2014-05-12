@@ -1,12 +1,15 @@
 // 1)  Process of creating a constructor in javascript
 
-function myConstructor(){} // This is a constructor now :)
+function myConstructor() {
+} // This is a constructor now :)
 
 // 2) Process to create an instance method
-myConstructor.prototype.instanceMethod = function(){};
+myConstructor.prototype.instanceMethod = function () {
+};
 
 // 3) Process to extend a particular class
-function iWillExtend(){}
+function iWillExtend() {
+}
 
 iWillExtend.prototype = new myConstructor();
 
@@ -29,27 +32,52 @@ console.log(a.constructor === myConstructor) // true
 // ========== Getter and Setter Functions provided by the browser ========
 
 /* todo : This need much better understanding, this is not clear as of now
-function Person(nameStr){
-    var name = nameStr;
+ function Person(nameStr){
+ var name = nameStr;
 
-    this.__defineGetter__("name", function(){
-        return name;
-    });
+ this.__defineGetter__("name", function(){
+ return name;
+ });
 
-    this.__defineSetter__("name", function(nameStr){
-        name = nameStr;
-    });
+ this.__defineSetter__("name", function(nameStr){
+ name = nameStr;
+ });
+ }
+
+ Person.prototype = {
+ get name(){
+ return this._name;
+ },
+ set name(nameStr){
+ this._name = nameStr;
+ }
+ };
+ */
+
+
+/*
+ * Eg. of inheritance in js
+ *
+ * */
+
+
+function Animal() {
 }
-
-Person.prototype = {
-    get name(){
-        return this._name;
+Animal.prototype = {
+    group: "",
+    gender: "",
+    eat: function (breed) {
+        console.log("An " + breed + " eats");
     },
-    set name(nameStr){
-        this._name = nameStr;
+    sleep: function (breed) {
+        console.log("An " + breed + " sleeps");
     }
 };
-*/
 
-
+function Bird() {
+}
+Bird.prototype = new Animal();
+Bird.prototype.fly = function () {
+    return "bird flies"
+};
 
