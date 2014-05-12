@@ -1,5 +1,5 @@
 # Design Patterns
-Contains List of some commonly used Design Pattern with some examples.
+Contains List of some commonly used Design Pattern with examples.
 #### Factory Pattern
  WIP
 
