@@ -26,7 +26,7 @@ console.log(iAmExtened instanceof  myConstructor) // true
 var myInstance = new myConstructor();
 var a = new myInstance.constructor();
 
-console.log(a.constructor === myConstructor) // true
+console.log(a.constructor === myConstructor); // true
 
 
 // ========== Getter and Setter Functions provided by the browser ========
@@ -79,5 +79,36 @@ function Bird() {
 Bird.prototype = new Animal();
 Bird.prototype.fly = function () {
     return "bird flies"
+};
+
+/*
+ * extend function is a wrapper to implement inheritance
+ * */
+
+function extend(subClass, superClass){
+    function Inheritance(){};
+    Inheritance.prototype = superClass.prototype;
+
+    subClass.prototype = new Inheritance();
+    subClass.prototype.constructor = subClass;
+    subClass.baseConstructor = superClass;
+
+    //for multiple inheritance
+    if (superClass.__super__) {
+        superClass.prototype.__super__ = superClass.__super__;
+    }
+
+    subClass.__super__ = superClass.prototype;
+}
+
+/*
+* Usage of extend
+* */
+
+extend(Bird, Animal);
+
+//Eg. This eg will show how to override the eat of super while using the same super function
+Bird.prototype.eat = function(){
+   return Bird.__super__.eat.apply(this) + "... caw !";
 };
 
