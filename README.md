@@ -1,5 +1,4 @@
 # designPatterns
-==============
 Boilerplate for different design patterns applicable in javascript domain
 
 ## Factory Pattern
